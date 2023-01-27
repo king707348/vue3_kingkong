@@ -1,60 +1,47 @@
 <template>
-  <div class="set-header">
+  <header class="set-header">
     <div class="logo">
       <img :src="logo" alt="" />
     </div>
-    <div class="header-list">
-      <ul>
-        <li>
-          <router-link to="/">
-            <el-button type="primary" link>首頁</el-button>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/about">
-            <el-button type="primary" link> 關於 </el-button>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <el-button type="primary" link>資訊</el-button>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="">
-            <el-button type="primary" link>文章</el-button>
-          </router-link>
-        </li>
-      </ul>
-    </div>
+    <linkList />
     <div class="emp"></div>
-  </div>
+  </header>
+
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
+import linkList from "./linklist.vue";
+
+
 const logo = ref("./src/assets/coffee.webp");
 </script>
 
 <style lang="scss" scoped>
 .set-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgba(#9c9c9c, 0.4);
+  background: #fcfcfc;
+  z-index: 998;
   .logo {
     display: flex;
     flex: 1;
     justify-content: center;
     img {
-      width: 60px;
+      max-width: 75px;
+      width: 100%;
     }
   }
-  .header-list {
-    flex: 9;
+  .links-list {
+    flex: 8;
     margin: auto;
-    ul {
+    :deep{
+      ul {
       display: flex;
       justify-content: flex-end;
       width: 50%;
@@ -65,9 +52,9 @@ const logo = ref("./src/assets/coffee.webp");
         margin: 0 5%;
         border: 1px solid transparent;
         .el-button {
-          position: relative;
-          padding: 0.8rem 1rem;
-          overflow: hidden;
+          :hover{
+            // transition: all .5s linear;
+          }
           ::before {
             content: "";
             position: absolute;
@@ -83,6 +70,8 @@ const logo = ref("./src/assets/coffee.webp");
         }
       }
     }
+    }
+    
 
     @keyframes go {
       // 右上到左上
