@@ -1,12 +1,13 @@
 <template>
   <header class="set-header">
-    <div class="logo">
-      <img :src="logo" alt="" />
-    </div>
+    <router-link to="/">
+      <div class="logo">
+        <img :src="use_logo" alt="yucheng"/>
+      </div>
+    </router-link>
     <linkList />
     <div class="emp"></div>
   </header>
-
 </template>
 
 <script setup>
@@ -15,8 +16,9 @@ import { RouterLink } from "vue-router";
 
 import linkList from "./linklist.vue";
 
-
-const logo = ref("./src/assets/coffee.webp");
+defineProps({
+  use_logo:String
+})
 </script>
 
 <style lang="scss" scoped>
@@ -40,45 +42,44 @@ const logo = ref("./src/assets/coffee.webp");
   .links-list {
     flex: 8;
     margin: auto;
-    :deep{
+    :deep {
       ul {
-      display: flex;
-      justify-content: flex-end;
-      width: 50%;
-      margin: auto;
-      li {
-        max-width: 100px;
-        width: 100%;
-        margin: 0 5%;
-        border: 1px solid transparent;
-        .el-button {
-          :hover{
-            // transition: all .5s linear;
-          }
-          ::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            background: blue;
-          }
-          &:hover ::before {
-            animation: go 2s linear infinite;
+        display: flex;
+        justify-content: flex-end;
+        width: 50%;
+        margin: auto;
+        li {
+          max-width: 100px;
+          width: 100%;
+          margin: 0 5%;
+          border: 1px solid transparent;
+          .el-button {
+            :hover {
+              // transition: all .5s linear;
+            }
+            ::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 0;
+              height: 0;
+              background: blue;
+            }
+            &:hover ::before {
+              animation: go 2s linear infinite;
+            }
           }
         }
       }
     }
-    }
-    
 
     @keyframes go {
       // 右上到左上
       0% {
         top: 0;
         right: 0;
-        width: 0;
+        width: 2px;
         height: 2px;
       }
       25% {
@@ -113,7 +114,7 @@ const logo = ref("./src/assets/coffee.webp");
         width: 2px;
         height: 2px;
       }
-      // 右下到左上
+      // 右下到右上
       76% {
         top: 90%;
         right: 0;
@@ -121,10 +122,10 @@ const logo = ref("./src/assets/coffee.webp");
         height: 100%;
       }
       100% {
-        top: -100%;
+        top: 0;
         right: 0;
         width: 2px;
-        height: 100%;
+        height: 2px;
       }
     }
   }

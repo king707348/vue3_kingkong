@@ -1,7 +1,7 @@
 <template>
   <footer class="setfooter">
     <div class="logo">
-      <img :src="logo" alt="" />
+      <img :src="use_logo" alt="" />
     </div>
     <linkList />
   </footer>
@@ -9,28 +9,28 @@
 
 <script setup>
 import { ref } from "vue";
-
 import linkList from "./linklist.vue";
 
+defineProps({
+  use_logo: String,
+});
 
-const logo = ref("./src/assets/coffee.webp");
 const num = ref(0);
-
 </script>
 
 <style lang="scss" scoped>
 .setfooter {
-  display: flex;
   position: sticky;
   top: 100%;
-  border-top: 1px solid green;
+  display: flex;
+  border-top: 1px solid var(--el-menu-text-color);
   .logo {
     display: flex;
     flex: 2;
     img {
-        max-width: 15rem;
-        width: 100%;
-        margin: auto;
+      max-width: 15rem;
+      width: 100%;
+      margin: auto;
     }
   }
   .links-list {
@@ -45,5 +45,4 @@ const num = ref(0);
     }
   }
 }
-
 </style>

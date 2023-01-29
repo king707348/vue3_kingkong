@@ -18,7 +18,7 @@
       </li>
       <li>
         <router-link to="">
-          <el-button type="primary" link>文章</el-button>
+          <el-button type="primary" link disabled>文章</el-button>
         </router-link>
       </li>
     </ul>
