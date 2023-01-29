@@ -39,7 +39,7 @@ const num = ref(0);
     :deep {
       .ulist {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 2rem;
       }
     }

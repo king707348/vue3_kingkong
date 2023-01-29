@@ -9,43 +9,50 @@ import { reactive, ref } from "vue";
 
 const scrollNum = reactive({
   opacity: 0,
-  display: 'none'
+  display: "none",
 });
 
-const aaa = () => {
-  if ( window.scrollY > 100) {
-    scrollNum.display = 'flex'
-    const as = () => {
-      if (scrollNum.opacity < 1) {
-        
-        scrollNum.opacity += 0.1;
-        
-        if (scrollNum.opacity >= 1) {
-          scrollNum.opacity = 1;
-          // console.log(scrollNum.opacity);
-        }
-      } else {
-        clearInterval(setTime);
-      }
-    };
-    const setTime = setInterval(as, 100);
+// 滾動事件
+const scrollOpt = () => {
+  if (scrollNum.opacity < 1) {
+    scrollNum.opacity += 0.1;
+    if (scrollNum.opacity >= 1) {
+      scrollNum.opacity = 1;
+    }
+  } else {
+    // 滾動停止
+    clearInterval(setTime);
   }
-  else {
+};
+// 滾動開始
+console.time("scroll時間")
+const setTime = setInterval(scrollOpt, 100);
+console.timeEnd("scroll時間")
+
+const scrollEvt = () => {
+  if (window.scrollY > 100) {
+    scrollNum.display = "flex";
+    scrollOpt();
+    setTime
+  } else {
     scrollNum.opacity = 0;
-    scrollNum.display = 'none'
+    scrollNum.display = "none";
   }
 };
 
-window.addEventListener("scroll", function () {
-  aaa();
-});
-
 const backTop = () => {
+  console.time('backTop')
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
+  console.timeEnd('backTop')
 };
+
+
+window.addEventListener("scroll", () => {
+  scrollEvt();
+});
 </script>
 
 <style lang="scss" scoped>
