@@ -9,6 +9,7 @@ import router from "./router";
 import "./style.css";
 import "element-plus/dist/index.css";
 
+
 const app = createApp(App);
 app.use(ElementPlus);
 app.use(createPinia());

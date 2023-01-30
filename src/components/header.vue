@@ -54,9 +54,6 @@ defineProps({
           margin: 0 5%;
           border: 1px solid transparent;
           .el-button {
-            :hover {
-              // transition: all .5s linear;
-            }
             ::before {
               content: "";
               position: absolute;

@@ -21,7 +21,7 @@ const use_logo = ref("./src/assets/coffee.webp");
 
 <style lang="scss" scoped>
 main {
-  margin: 1rem 0;
+  
 }
 :deep {
   .el-button {
